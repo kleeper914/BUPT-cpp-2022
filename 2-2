@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int is_nprime(int n);
+
+int main()
+{
+	int n = 0;
+	int count = 0;
+	int max = 0;
+
+	for (int i = 0; i < 10; i++)
+	{
+		cin >> n;
+		if (is_nprime(n))
+		{
+			count++;
+			if (n > max)
+			{
+				max = n;
+			}
+
+		}
+	}
+	if (count == 0)
+	{
+		cout << "无";
+	}
+	else
+	{
+		cout << max;
+	}
+	return 0;
+}
+
+int is_nprime(int n)
+{
+	for (int i = 2; i < sqrt(n); i++)
+	{
+		if (n % i == 0)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
