@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	int num = 0;
+	int num_oct = 0;
+	int i = 0;
+
+	cin >> hex >> num;
+	while (num > 0)
+	{
+		num_oct += num % 8 * pow(10, i++);
+		num /= 8;
+	}
+	cout << num_oct;
+	return 0;
+}
