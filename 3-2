@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+struct employee
+{
+	char id[5];
+	char name[20];
+	float salary;
+};
+
+int main()
+{
+	struct employee emp[5];
+	for (int i = 0; i < 5; i++)
+	{
+		cin >> emp[i].id >> emp[i].name >> emp[i].salary;
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4 - i; j++)
+		{
+			if (emp[j].salary < emp[j + 1].salary)
+			{
+				struct employee temp = emp[j];
+				emp[j] = emp[j + 1];
+				emp[j + 1] = temp;
+			}
+		}
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		cout << emp[i].id << " " << emp[i].name << " " <<emp[i].salary << endl;
+	}
+	return 0;
+}
