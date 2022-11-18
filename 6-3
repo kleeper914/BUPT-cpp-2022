@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	char arr[30] = { 0 };
+	int count = 0;
+	int count_dot = 0;
+	int flag = 1;
+	int sum = 0;
+
+	while (cin.getline(arr, 30))
+	{
+		int num[3] = { 0 };
+		flag = 1;
+		count = 0;
+		count_dot = 0;
+		sum = 0;
+		for (int i = 0; ; i++)
+		{
+			if (isdigit(arr[i]))
+			{
+				num[count] = arr[i] - 48;
+				count++;
+			}
+			if (count <= 3 && arr[i] == '.')
+			{
+				sum = 0;
+				for (int j = count - 1; j >= 0; j--)
+				{
+					sum += num[j] * pow(10, count - j - 1);
+				}
+				count = 0;
+				count_dot++;
+			}
+			if (!arr[i]) {
+				break;
+			}
+			if ((count > 3) || (arr[i] != '.' && !isdigit(arr[i])) || (sum > 255))
+			{
+				flag = 0;
+				break;
+			}
+		}
+		if (flag == 1 && count_dot == 3) cout << "Y" << endl;
+		else cout << "N" << endl;
+	}
+	return 0;
+}
