@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+void input(int arr[], int num);
+
+int main()
+{
+	int n = 0, m = 0;
+	int distance = 0;
+	int* f = NULL;
+	int* g = NULL;
+
+	cin >> n >> m;
+	f = (int*)malloc(sizeof(int) * n);
+	g = (int*)malloc(sizeof(int) * m);
+	input(f, n);
+	input(g, m);
+	int temp = g[0] - f[n - 1];
+	distance = abs(temp);
+	if (temp < 0) {
+		for (int i = 0; i < m; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				if (abs(g[i] - f[j]) < distance)
+				{
+					distance = abs(g[i] - f[j]);
+				}
+			}
+		}
+	}
+	else if (temp >= 0) distance = temp;
+	cout << distance;
+	return 0;
+}
+
+void input(int arr[], int num)
+{
+	for (int i = 0; i < num; i++)
+	{
+		cin >> arr[i];
+	}
+}
