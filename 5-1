@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int arr[9] = { 2, 13, 24, 46, 57, 60, 79, 83 };
+	int num = 0;
+
+	cin >> num;
+	for (int i = 0; i < 9; i++)
+	{
+		if (num > arr[i] && num < arr[i + 1])
+		{
+			for (int j = 0; j < 8 - i; j++)
+			{
+				arr[8 - j] = arr[7 - j];
+			}
+			arr[i + 1] = num;
+		}
+		else if (num <= arr[0])
+		{
+			break;
+		}
+		else if(num >= arr[7])
+		{
+			arr[8] = num;
+		}
+	}
+	if (num <= arr[0])
+	{
+		for (int i = 7; i >= 0; i--)
+		{
+			arr[i + 1] = arr[i];
+		}
+		arr[0] = num;
+	}
+	for (int i = 0; i < 8; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << arr[8];
+	return 0;
+}
