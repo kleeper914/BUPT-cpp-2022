@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+	void Print(void);
+	void input(void);
+private:
+	char schoolName[20];
+	char name[20];
+	int age;
+};
+
+class G_Student : public Student
+{
+public:
+	void Print(void);
+	void input(void);
+private:
+	char supervisorName[20];
+};
+
+void Student::input(void)
+{
+	cin >> schoolName >> name >> age;
+}
+
+void Student::Print(void)
+{
+	cout << schoolName << "大学的" << name << "年龄" << age;
+}
+
+void G_Student::input(void)
+{
+	cin >> supervisorName;
+}
+
+void G_Student::Print(void)
+{
+	cout << "导师是" << supervisorName;
+}
+
+int main()
+{
+	Student student;
+	G_Student g_student;
+	student.input();
+	g_student.input();
+	student.Print();
+	g_student.Print();
+	return 0;
+}
