@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+#define PI 3.14
+
+class Circle
+{
+public:
+	void getRadius(void);
+	float calPerimeter(void);
+	float calArea(void);
+private:
+	float Radius;
+};
+
+void Circle::getRadius(void)
+{
+	cin >> Radius;
+}
+
+float Circle::calPerimeter(void)
+{
+	return (2 * PI * Radius);
+}
+
+float Circle::calArea(void)
+{
+	return (PI * Radius * Radius);
+}
+
+int main()
+{
+	Circle a;
+	a.getRadius();
+	float perimeter = a.calPerimeter();
+	float area = a.calArea();
+	cout << perimeter << " " << area;
+	return 0;
+}
