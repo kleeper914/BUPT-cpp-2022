@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Box
+{
+public:
+	inline void input(void);
+	int getVolume(void);
+	int getArea(void);
+private:
+	int x;
+	int y;
+	int z;
+};
+
+inline void Box::input(void)
+{
+	cin >> x >> y >> z;
+}
+
+int Box::getVolume(void)
+{
+	return (x * y * z);
+}
+
+int Box::getArea(void)
+{
+	return 2 * (x * y + x * z + y * z);
+}
+
+int main()
+{
+	Box box;
+	box.input();
+	int volume = box.getVolume();
+	int area = box.getArea();
+	cout << "volume=" << volume << endl;
+	cout << "area=" << area;
+	return 0;
+}
