@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+double get_average(int num[], int n);
+
+int main()
+{
+	char arr[50] = { 0 };
+	int num[20] = { 0 };
+	int len = 0, n = 0;
+
+	cin.getline(arr, 50);
+	len = strlen(arr);
+	for (int i = 0; i < len; i++)
+	{
+		if (isdigit(arr[i]))
+		{
+			num[n++] = arr[i] - 48;
+		}
+	}
+	double aver = get_average(num, n);
+	cout << aver;
+	return 0;
+}
+
+double get_average(int num[], int n)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += num[i];
+	}
+	return ((double)sum / n);
+}
