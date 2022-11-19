@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Employee
+{
+public:
+	Employee(char a[], char b[], int c, double d, char e[]);
+	void output(void);
+private:
+	char id[5];
+	char name[20];
+	int age;
+	double salary;
+	char project[10];
+};
+
+Employee::Employee(char a[], char b[], int c, double d, char e[])
+{
+	strcpy(id, a);
+	strcpy(name, b);
+	age = c;
+	salary = d;
+	strcpy(project, e);
+}
+
+void Employee::output(void)
+{
+	cout << id << " " << name << " " << age << " " << salary << " " << project;
+}
+
+int main()
+{
+	char a[5];
+	char b[20];
+	int c;
+	double d;
+	char e[10];
+	cin >> a >> b >> c >> d >> e;
+	Employee employee(a, b, c, d, e);
+	employee.output();
+	return 0;
+}
