@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+struct Student* search(struct Student* stu, int num);
+
+struct Student
+{
+	int studentNumber;
+	double score1;
+	double score2;
+	double score3;
+	double score4;
+};
+
+int main()
+{
+	struct Student stu[4] = { {1001, 87.5, 84, 76, 86},
+					  {1002, 56, 87, 90, 80},
+					  {1003, 90, 88, 89, 96},
+					  {1004, 73, 52, 87, 97} };
+	int num = 0;
+	cin >> num;
+	Student* p = search(stu, num);
+	if (p != NULL)
+	{
+		cout << p->score1 << " " << p->score2 << " " << p->score3 << " " << p->score4;
+	}
+	else
+	{
+		cout << "学号输入错误!";
+	}
+	return 0;
+}
+
+struct Student* search(struct Student* stu, int num)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (num == (stu + i)->studentNumber)
+		{
+			return (stu + i);
+		}
+	}
+	return NULL;
+}
