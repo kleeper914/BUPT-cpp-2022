@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+void bubble_sort(int arr[], int num);
+
+int main()
+{
+	int group = 0;
+	int num = 0;
+    
+	cin >> group;
+	for (int i = 0; i < group; i++)
+	{
+		cin >> num;
+		int* p = (int*)malloc(sizeof(int) * num);
+		for (int j = 0; j < num; j++)  cin >> p[j];
+		bubble_sort(p, num);
+		int d = p[1] - p[0];
+		int flag = 1;
+		for (int j = 2; j < num - 1; j++)
+		{
+			if (p[j + 1] - p[j] != d)
+			{
+				flag = 0;
+				break;
+			}
+		}
+		if (flag == 0)
+		{
+			cout << "no" << endl;
+		}
+		else
+		{
+			cout << "yes" << endl;
+		}
+		free(p);
+	}
+	return 0;
+}
+
+void bubble_sort(int arr[], int num)
+{
+	for (int i = 0; i < num - 1; i++)
+	{
+		for (int j = 0; j < num - 1 - i; j++)
+		{
+			if (arr[j] < arr[j + 1])
+			{
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+}
