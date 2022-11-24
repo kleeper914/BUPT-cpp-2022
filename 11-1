@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+class Box {
+public:
+    Box(int len, int wid, int hei) :length(len = 1), width(wid = 1), height(hei = 1) {}
+    int getVolume(void);
+    void input(int, int, int);
+private:
+    int length;
+    int width;
+    int height;
+};
+
+int Box::getVolume(void)
+{
+    return (length * width * height);
+}
+
+void Box::input(int a, int b, int c)
+{
+    length = a;
+    width = b;
+    height = c;
+}
+
+int main()
+{
+    Box box(1, 2, 3);
+    int a, b, c;
+    cin >> a >> b >> c;
+    box.input(a, b, c);
+    int volume = box.getVolume();
+    cout << volume;
+    system("pause");
+    return 0;
+}
