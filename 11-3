@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+class Employee
+{
+public:
+    virtual int getSalary(void) { return (salary); }
+private:
+    int salary;
+};
+
+class Manager :public Employee
+{
+public:
+    int getSalary(void);
+    Manager(int num) :salary(num) {}
+private:
+    int salary;
+};
+
+class Salesman :public Employee
+{
+public:
+    int getSalary(void);
+    Salesman(int n1, int n2) :salary(n1), ticheng(n2) {}
+private:
+    int salary;
+    int ticheng;
+};
+
+class Worker :public Employee
+{
+public:
+    int getSalary(void);
+    Worker(int n1, int n2) :salary(n1), day(n2) {}
+private:
+    int salary;
+    int day;
+};
+
+int Worker::getSalary(void)
+{
+    return (day * salary);
+}
+
+int Salesman::getSalary(void)
+{
+    return (salary + ticheng);
+};
+
+int Manager::getSalary(void)
+{
+    return salary;
+}
+
+int main()
+{
+    int a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    Manager manager(a);
+    Salesman salesman(b, c);
+    Worker worker(d, e);
+    int salary[3];
+    salary[0] = manager.getSalary();
+    salary[1] = salesman.getSalary();
+    salary[2] = worker.getSalary();
+    for (int i = 0; i < 3; i++)
+    {
+        cout << salary[i];
+        if (i < 2) cout << '\n';
+    }
+    system("pause");
+    return 0;
+}
