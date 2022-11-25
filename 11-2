@@ -1,0 +1,66 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+class MyDate
+{
+public:
+    void print(void);
+    int compare(MyDate& a);
+    int get(int);
+    void set(int, int, int);
+private:
+    int year;
+    int month;
+    int day;
+};
+
+void MyDate::print(void)
+{
+    cout << month << "/" << day << "/" << year;
+}
+
+int MyDate::get(int n)
+{
+    if(n == 1)return year;
+    else if(n == 2) return month;
+    else return day;
+}
+
+void MyDate::set(int n1, int n2, int n3)
+{
+    year = n1;
+    month = n2;
+    day = n3;
+}
+
+int MyDate::compare(MyDate& a)
+{
+    if(year > a.get(1)) return 1;
+    else if(year < a.get(1)) return -1;
+    else{
+        if(month > a.get(2)) return 1;
+        else if(month < a.get(2)) return -1;
+        else{
+            if(day > a.get(3)) return 1;
+            else if(day < a.get(3)) return -1;
+            else return 0;
+        }
+    }
+}
+
+int main()
+{
+    MyDate date1, date2;
+    int n1, n2, n3;
+
+    cin >> n1 >> n2 >> n3;
+    date1.set(n1, n2, n3);
+    cin >> n1 >> n2 >> n3;
+    date2.set(n1, n2, n3);
+    int flag = date1.compare(date2);
+    date1.print();
+    cout << " " << flag;
+    system("pause");
+    return 0;
+}
